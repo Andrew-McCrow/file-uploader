@@ -8,6 +8,21 @@
     <% if (typeof user !== "undefined" && user) { %>
       <p>Logged in as <strong><%= user.username %></strong></p>
       <a href="/log-out">Log out</a>
+
+      <hr />
+
+      <% if (typeof error !== "undefined") { %>
+        <p style="color: red;"><%= error %></p>
+      <% } %>
+      <% if (typeof success !== "undefined") { %>
+        <p style="color: green;"><%= success %></p>
+      <% } %>
+
+      <h2>Upload a file</h2>
+      <form action="/upload" method="POST" enctype="multipart/form-data">
+        <input type="file" name="file" required />
+        <button type="submit">Upload</button>
+      </form>
     <% } else { %>
       <a href="/log-in">Log in</a> | <a href="/sign-up">Sign up</a>
     <% } %>
